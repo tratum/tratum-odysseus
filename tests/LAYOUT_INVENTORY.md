@@ -19,7 +19,7 @@ disturb marker registration or focused selection.
 
 Groups whose tests need no route/app setup and no real DB/session setup:
 
-1. **CLI / script tests** (`area_cli`, 27 files) - load `scripts/` entry
+1. **CLI / script tests** (`area_cli`, 28 files) - load `scripts/` entry
    points via `tests.helpers.cli_loader.load_script`; DB access is stubbed
    with `tests.helpers.db_stubs` (`SessionLocal` is a plain stub attribute).
    No `TestClient`, no FastAPI app import, no SQLite files.
@@ -59,7 +59,9 @@ Why this group over the alternatives:
 
 ## Files included in the first move
 
-The 27 files classified `area_cli` (verified against `_taxonomy.py`):
+The 28 files classified `area_cli` (verified against `_taxonomy.py`):
+
+Note: this inventory was refreshed against current `dev` after `tests/test_research_cli_status.py` was added to the `area_cli` set.
 
 - `tests/test_calendar_cli_name.py`
 - `tests/test_contacts_cli_rows.py`
@@ -80,6 +82,7 @@ The 27 files classified `area_cli` (verified against `_taxonomy.py`):
 - `tests/test_preset_cli_store.py`
 - `tests/test_research_cli_preview.py`
 - `tests/test_research_cli_status_filter.py`
+- `tests/test_research_cli_status.py`
 - `tests/test_research_cli_store.py`
 - `tests/test_sessions_cli.py`
 - `tests/test_signature_cli_export.py`
@@ -151,7 +154,7 @@ rg -n -F -f /tmp/area_cli_paths.txt .github scripts docs \
 Also checked by reading the code: `tests/conftest.py` registers sub-markers
 from a recursive `rglob` scan, and `tests/_taxonomy.py` classifies by filename
 tokens only (plus the `tests/helpers/` directory rule), so the markers of the
-27 files do not change when they move into `tests/cli/`.
+28 files do not change when they move into `tests/cli/`.
 
 ## Validation for the future move PR
 
